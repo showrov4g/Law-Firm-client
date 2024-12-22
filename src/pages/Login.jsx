@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
+    const {signIn, user, setUser} = useContext(AuthContext);
+    const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const {email, password} = data;
+    signIn(email, password)
+    .then(result=>{
+        const user = result.user
+        setUser(user)
+        navigate(location?.state ? location.state : "/");
+        toast.success("User Login Successful")
+    })
+    .catch(err=>toast.error(err.message));
+
+  };
   console.log(errors);
 
   return (
@@ -26,14 +41,14 @@ const Login = () => {
             className="px-5 py-3 rounded-full text-2xl bg-transparent outline-none border"
             type="email"
             placeholder="Email"
-            {...register("Email", { required: true })}
+            {...register("email", { required: true })}
           />
 
           <input
             className="px-5 py-3 rounded-full text-2xl bg-transparent outline-none border"
             type="password"
             placeholder="Password"
-            {...register("Password", {
+            {...register("password", {
               required: true,
               min: 6,
               pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/i,

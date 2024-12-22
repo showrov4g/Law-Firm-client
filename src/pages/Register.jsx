@@ -3,18 +3,27 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 const Register = () => {
-  const {user} = useContext(AuthContext);
+  const {user, createUser, setUser} = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    const {name, email } = data
-    console.log(data)};
-  console.log(errors);
+    const {name, email, password, photoUrl} = data;
+    createUser(email, password)
+    .then(result=>{
+      const user = result.user;
+      setUser(user)
+      console.log(user)
+      toast(result)
+    })
+    .catch(err=>(console.log(err.message)))
+    };
+
 
   return (
     <div className="bg-[#F2F2F2] py-10">
@@ -30,25 +39,25 @@ const Register = () => {
             className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
             type="text"
             placeholder="Name"
-            {...register("Name", { required: true })}
+            {...register("name", { required: true })}
           />
           <input
             className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
             type="email"
             placeholder="Email"
-            {...register("Email", { required: true })}
+            {...register("email", { required: true })}
           />
           <input
             className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
             type="url"
             placeholder="Photo Url"
-            {...register("Photo Url", { required: true })}
+            {...register("photoUrl", { required: true })}
           />
           <input
             className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
             type="password"
             placeholder="Password"
-            {...register("Password", {
+            {...register("password", {
               required: true,
               min: 6,
               pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/i,
