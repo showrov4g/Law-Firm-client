@@ -20,7 +20,23 @@ const Login = () => {
         const user = result.user
         setUser(user)
         navigate(location?.state ? location.state : "/");
-        toast.success("User Login Successful")
+        // toast.success("User Login Successful")
+        const lastSignInTime = result.user?.metadata?.lastSignInTime;
+        const loginInfo = { email, lastSignInTime };
+        fetch(`http://localhost:5000/users`,{
+          method: "PATCH",
+          headers:{
+            'content-type': "application/json"
+          },
+          body: JSON.stringify(loginInfo)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          toast.success("Login successfully")
+        })
+        .catch(err=>{
+          toast.error(err.message);
+        })
     })
     .catch(err=>toast.error(err.message));
 

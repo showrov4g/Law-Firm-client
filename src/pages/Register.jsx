@@ -1,29 +1,51 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const {user, createUser, setUser} = useContext(AuthContext);
+  const { user, createUser, setUser, updateUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    const {name, email, password, photoUrl} = data;
+    const { name, email, password, photoUrl } = data;
     createUser(email, password)
-    .then(result=>{
-      const user = result.user;
-      setUser(user)
-      console.log(user)
-      toast(result)
-    })
-    .catch(err=>(console.log(err.message)))
-    };
+      .then((result) => {
+        // user update
+        updateUser({ displayName: name, photoURL: photoUrl });
+        const user = result.user;
+        setUser(user);
+        console.log(user);
+        const creationTime  = user.metadata.creationTime;
 
+        const newUser = {name, email, creationTime}
+
+        // user data api fetch
+        fetch('http://localhost:5000/users',{
+          method:'POSt',
+          headers:{
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(newUser)
+
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            toast.success("User Account Create Successfully");
+            Navigate("/");
+            console.log(data)
+          })
+          .catch((err) => {
+            toast.error(err.message);
+          });
+      })
+      .catch((err) => toast.error(err.message));
+  };
 
   return (
     <div className="bg-[#F2F2F2] py-10">
@@ -64,13 +86,24 @@ const Register = () => {
             })}
           />
 
-          <input className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-2xl text-white" type="submit" value="Register" />
+          <input
+            className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-2xl text-white"
+            type="submit"
+            value="Register"
+          />
         </form>
         <div className="px-6 pb-10">
-          <p>If you have any account <Link className="text-green-500" to={"/login"}>Login Here</Link></p>
+          <p>
+            If you have any account{" "}
+            <Link className="text-green-500" to={"/login"}>
+              Login Here
+            </Link>
+          </p>
           <div className="divider divider-success">OR</div>
           <div>
-            <button className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-xl text-white w-full"><FcGoogle /> Login With Google</button>
+            <button className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-xl text-white w-full">
+              <FcGoogle /> Login With Google
+            </button>
           </div>
         </div>
       </div>
