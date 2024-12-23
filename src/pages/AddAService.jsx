@@ -1,13 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 const AddAService = () => {
+  const { user } = useContext(AuthContext);
+  const { email } = user;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const {
+      description,
+      serviceArea,
+      serviceImage,
+      serviceName,
+      servicePrice,
+    } = data;
+    const service = {
+      email,
+      serviceName,
+      serviceArea,
+      serviceImage,
+      servicePrice,
+      description,
+    };
+    fetch(`https://server-rho-liart-69.vercel.app/services`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+
+      body: JSON.stringify(service),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Your Services Add Successful");
+      })
+      .catch((error) => toast.error(error.message));
+    console.log(data);
+  };
   console.log(errors);
 
   return (
