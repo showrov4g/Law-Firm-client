@@ -1,0 +1,103 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+
+const AddAService = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+  console.log(errors);
+
+  return (
+    <div className="w-2/4 mx-auto space-y-7 bg-white shadow-lg p-7">
+      <h1 className="text-center text-3xl font-bold">Add services page</h1>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col space-y-4"
+      >
+        <label htmlFor="serviceImage" className="text-xl text-black">
+          Service Image URL
+        </label>
+        <input
+          className="border rounded-md p-2"
+          type="url"
+          placeholder="Service Image URL"
+          {...register("serviceImage", { required: true })}
+          aria-invalid={errors.serviceImage ? "true" : "false"}
+        />
+        {errors.serviceImage?.type === "required" && (
+          <p className="text-red-600 text-xs" role="alert">
+            Service Image Url is Required
+          </p>
+        )}
+        <label htmlFor="serviceName" className="text-xl text-black">
+          Service Name
+        </label>
+        <input
+          className="border rounded-md p-2"
+          type="text"
+          placeholder="Service Name"
+          {...register("serviceName", { required: true })}
+          aria-invalid={errors.serviceName ? "true" : "false"}
+        />
+        {errors.serviceName?.type === "required" && (
+          <p className="text-red-600 text-xs" role="alert">
+            Service name is Required
+          </p>
+        )}
+        <label htmlFor="serviceImage" className="text-xl text-black">
+          Service Price
+        </label>
+        <input
+          className="border rounded-md p-2"
+          type="number"
+          placeholder="Service Price"
+          {...register("servicePrice", { required: true })}
+          aria-invalid={errors.servicePrice ? "true" : "false"}
+        />
+        {errors.servicePrice?.type === "required" && (
+          <p className="text-red-600 text-xs" role="alert">
+            Service price is Required
+          </p>
+        )}
+        <label htmlFor="serviceArea" className="text-xl text-black">
+          Service Area
+        </label>
+        <input
+          className="border rounded-md p-2"
+          type="text"
+          placeholder="Service Area"
+          {...register("serviceArea", { required: true })}
+          aria-invalid={errors.serviceArea ? "true" : "false"}
+        />
+        {errors.serviceArea?.type === "required" && (
+          <p className="text-red-600 text-xs" role="alert">
+            Service Area is Required
+          </p>
+        )}
+        <label htmlFor="description" className="text-xl text-black">
+          Description
+        </label>
+        <textarea
+          className="border rounded-md p-2"
+          placeholder="Description"
+          {...register("description", { required: true })}
+          aria-invalid={errors.description ? "true" : "false"}
+        />
+        {errors.description?.type === "required" && (
+          <p className="text-red-600 text-xs" role="alert">
+            Description is Required
+          </p>
+        )}
+        <input
+          className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-2xl text-white"
+          type="submit"
+        />
+      </form>
+    </div>
+  );
+};
+
+export default AddAService;

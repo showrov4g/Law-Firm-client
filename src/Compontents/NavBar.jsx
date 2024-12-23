@@ -6,12 +6,18 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const links = (
     <>
+       <li><NavLink to={"/"}>Home</NavLink></li>
+       <li><NavLink to={"/services"}>services</NavLink></li>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <details>
+          <summary>Dashboard</summary>
+          <ul className="p-2 w-80">
+            <li><NavLink to={"/addAService"}>Add Services</NavLink></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </details>
       </li>
-      <li>
-        <NavLink to="/services">Services</NavLink>
-      </li>
+      <li><a>Item 3</a></li>
     </>
   );
   return (
@@ -36,7 +42,7 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 p-2 shadow"
           >
             {links}
           </ul>
@@ -55,10 +61,7 @@ const NavBar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+                <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
               </div>
             </div>
             <ul

@@ -18,12 +18,13 @@ const Login = () => {
     signIn(email, password)
     .then(result=>{
         const user = result.user
+        console.log(user);
         setUser(user)
         navigate(location?.state ? location.state : "/");
         // toast.success("User Login Successful")
         const lastSignInTime = result.user?.metadata?.lastSignInTime;
         const loginInfo = { email, lastSignInTime };
-        fetch(`http://localhost:5000/users`,{
+        fetch(`https://server-rho-liart-69.vercel.app/users`,{
           method: "PATCH",
           headers:{
             'content-type': "application/json"

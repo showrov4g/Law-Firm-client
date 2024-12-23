@@ -9,7 +9,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    const [Loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     // create user 
     const createUser = (email, password) =>{
         setLoading(true)
@@ -52,7 +52,7 @@ const AuthProvider = ({children}) => {
     const authInfo = {
         user,
         setUser,
-        Loading,
+        loading,
         setLoading,
         createUser,
         signIn,

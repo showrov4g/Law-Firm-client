@@ -26,7 +26,7 @@ const Register = () => {
         const newUser = {name, email, creationTime}
 
         // user data api fetch
-        fetch('http://localhost:5000/users',{
+        fetch('https://server-rho-liart-69.vercel.app/users',{
           method:'POSt',
           headers:{
             "content-type": "application/json"
