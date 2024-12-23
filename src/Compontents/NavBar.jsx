@@ -13,7 +13,7 @@ const NavBar = () => {
           <summary>Dashboard</summary>
           <ul className="p-2 w-80">
             <li><NavLink to={"/addAService"}>Add Services</NavLink></li>
-            <li><a>Submenu 2</a></li>
+            <li><NavLink to={'/manageService'}>Manage Services</NavLink></li>
           </ul>
         </details>
       </li>
