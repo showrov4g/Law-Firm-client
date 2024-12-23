@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
 
 const Register = () => {
   const { user, createUser, setUser, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -20,7 +21,7 @@ const Register = () => {
         updateUser({ displayName: name, photoURL: photoUrl });
         const user = result.user;
         setUser(user);
-        console.log(user);
+        navigate(location?.state ? location.state : "/");
         const creationTime  = user.metadata.creationTime;
 
         const newUser = {name, email, creationTime}
