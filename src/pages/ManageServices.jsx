@@ -11,7 +11,7 @@ const ManageServices = () => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     fetch(
-      `https://server-rho-liart-69.vercel.app/services?email=${user?.email}`
+      `https://server-rho-liart-69.vercel.app/my-services?email=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setServices(data))
@@ -49,43 +49,54 @@ const ManageServices = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      <h1 className="text-3xl font-semibold text-center">
-        Manage Your Services:{" "}
-        <span className="text-green-600">{services?.length}</span>
-      </h1>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>SL</th>
-              <th>Services Name</th>
-              <th>Price</th>
-              <th>Service Area</th>
-              <th>Manage</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
+      <div className="">
+        {services?.length === 0 ? (
+          <div>
+            <h1 className="text-center text-5xl font-bold ">No Service Found <span className="text-red-600 font-bold">!</span> </h1>
+          </div>
+        ) : (
+          <div>
+            <h1 className="text-3xl font-semibold text-center">
+              Manage Your Services:{" "}
+              <span className="text-green-600">{services?.length}</span>
+            </h1>
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>SL</th>
+                  <th>Services Name</th>
+                  <th>Price</th>
+                  <th>Service Area</th>
+                  <th>Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* row 1 */}
 
-            {services?.map((service, index) => (
-              <tr>
-                <th>{index + 1}</th>
-                <td>{service.serviceName}</td>
-                <td>$ {service.servicePrice}</td>
-                <td>{service.serviceArea}</td>
-                <td className="flex items-center justify-center space-x-5">
-                  <button className= "btn btn-success text-white font-bold text-2xl">
-                    <CiEdit />
-                  </button>
-                  <button onClick={()=>handleDelete(service._id)} className="btn btn-error">
-                    <MdDelete />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                {services?.map((service, index) => (
+                  <tr>
+                    <th>{index + 1}</th>
+                    <td>{service.serviceName}</td>
+                    <td>$ {service.servicePrice}</td>
+                    <td>{service.serviceArea}</td>
+                    <td className="flex items-center justify-center space-x-5">
+                      <button className="btn btn-success text-white font-bold text-2xl">
+                        <CiEdit />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(service._id)}
+                        className="btn btn-error"
+                      >
+                        <MdDelete />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
       {/* <div className="grid grid-cols-4 gap-5 my-6">

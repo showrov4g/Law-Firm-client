@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 
 const AddAService = () => {
   const { user } = useContext(AuthContext);
-  const { email } = user;
+  console.log(user);
+  const { email, displayName, photoURL } = user;
   const {
     register,
     handleSubmit,
@@ -26,6 +27,8 @@ const AddAService = () => {
       serviceImage,
       servicePrice,
       description,
+      displayName,
+      photoURL,
     };
     fetch(`https://server-rho-liart-69.vercel.app/services`, {
       method: "POST",
