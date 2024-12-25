@@ -22,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "services",
         element: <Services></Services>,
+        loader: ()=> fetch(`https://server-rho-liart-69.vercel.app/allServices`)
       },
       {
         path: "register",
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <AddAService></AddAService>
           </PrivateRoute>
-        ),
+        )
       },
       {
         path: 'manageService',
