@@ -6,7 +6,7 @@ import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-    const {signIn, user, setUser} = useContext(AuthContext);
+    const {signIn, user, setUser, loginWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
   const {
     register,
@@ -42,7 +42,12 @@ const Login = () => {
     .catch(err=>toast.error(err.message));
 
   };
-  console.log(errors);
+  const googleLogin=()=>{
+    loginWithGoogle()
+    .then(data=>toast.success("You have successfully login with your google account"))
+    .catch(err=>toast.error(err.message))
+    navigate(location?.state ? location.state : "/");
+  }
 
   return (
     <div className="bg-[#F2F2F2] py-10">
@@ -86,7 +91,7 @@ const Login = () => {
             </Link>
             <div className="divider divider-success">OR</div>
             <div>
-              <button className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-xl text-white w-full">
+              <button onClick={googleLogin} className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-xl text-white w-full">
                 <FcGoogle /> Login With Google
               </button>
             </div>

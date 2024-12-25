@@ -29,7 +29,7 @@ const ManageServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://server-rho-liart-69.vercel.app/services/${_id}`, {
+        fetch(`https://server-rho-liart-69.vercel.app/my-purchase/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

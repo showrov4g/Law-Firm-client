@@ -18,7 +18,6 @@ const NavBar = () => {
           </ul>
         </details>
       </li>
-      <li><a>Item 3</a></li>
     </>
   );
   return (
