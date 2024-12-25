@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Context/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Feature = () => {
   const [services, setServices] = useState();
@@ -40,7 +41,7 @@ const Feature = () => {
                   <p className="font-semibold">Service Provider: <span className="badge badge-secondary">{service.displayName}</span></p>
                 </div>
                 <div className="card-actions justify-end">
-                  <div className=" btn badge badge-outline">Views Details</div>
+                  <Link to={`/servicesDetails/${service._id}`} className=" btn badge badge-outline">Views Details</Link>
                 </div>
               </div>
             </div>

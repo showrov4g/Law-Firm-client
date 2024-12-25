@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 
 const AddAService = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const { email, displayName, photoURL } = user;
   const {
     register,
@@ -43,9 +42,8 @@ const AddAService = () => {
         toast.success("Your Services Add Successful");
       })
       .catch((error) => toast.error(error.message));
-    console.log(data);
   };
-  console.log(errors);
+
 
   return (
     <div className="w-2/4 mx-auto space-y-7 bg-white shadow-lg p-7">
