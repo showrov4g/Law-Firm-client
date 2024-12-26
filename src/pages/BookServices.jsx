@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const BookServices = () => {
   const { user } = useContext(AuthContext);
@@ -49,7 +50,11 @@ const BookServices = () => {
 
 
   return (
-    <div>
+    <div className="my-16">
+          <Helmet>
+        <title>LAW || Your Booked Services</title>
+        <meta name="description" content="Learn more about us!" />
+      </Helmet>
 
       {/* table for booked item  */}
       <div className="">

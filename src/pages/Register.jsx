@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { user, createUser, setUser, updateUser, loginWithGoogle } = useContext(AuthContext);
@@ -57,7 +58,11 @@ const Register = () => {
   }
 
   return (
-    <div className="bg-[#F2F2F2] py-10">
+    <div className="bg-[#F2F2F2] py-10 my-16">
+          <Helmet>
+        <title>LAW || Register now</title>
+        <meta name="description" content="Learn more about us!" />
+      </Helmet>
       <div className="max-w-lg mx-auto bg-white rounded-xl">
         <h1 className="text-5xl py-5 text-white font-bold text-center bg-gradient-to-r from-[#5756CD] to-[#B850C1] rounded-t-xl ">
           Register now

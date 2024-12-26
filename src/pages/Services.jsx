@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { motion } from "motion/react";
+import { Helmet } from "react-helmet";
 
 const Services = () => {
   const data = useLoaderData();
@@ -14,7 +15,11 @@ const Services = () => {
     photoURL,
   } = data;
   return (
-    <div>
+    <div className="my-16">
+          <Helmet>
+        <title>LAW || manage your services</title>
+        <meta name="description" content="Learn more about us!" />
+      </Helmet>
       <h2 className="text-center text-5xl font-bold">
         All Service: {data.length}
       </h2>

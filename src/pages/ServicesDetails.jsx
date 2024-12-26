@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const ServicesDetails = () => {
   const { user } = useContext(AuthContext);
@@ -56,7 +57,11 @@ const ServicesDetails = () => {
   };
 
   return (
-    <div className=" w-4/5 mx-auto">
+    <div className=" w-4/5 mx-auto my-16">
+          <Helmet>
+        <title>LAW || Service details </title>
+        <meta name="description" content="Learn more about us!" />
+      </Helmet>
       <h1 className="text-center text-4xl font-semibold">{serviceName}</h1>
       <div className="card bg-base-100 w-10/12 p-4 mx-auto shadow-xl">
         <figure>
@@ -66,18 +71,18 @@ const ServicesDetails = () => {
         <div className="card-body">
           <div>
             <h2 className="card-title">Service Name: {serviceName}</h2>
-            <p>Description: {description}</p>
+            <p><span className="font-bold">Description:</span> {description}</p>
             <p className="badge badge-secondary">
               Service Price ${servicePrice}
             </p>
           </div>
           {/* service provider information */}
           <div>
-            <h1>Service provider Information</h1>
+            <h1 className="font-bold text-xl">Service provider Information</h1>
             <div>
-              <h4>Name: {displayName}</h4>
-              <img src={photoURL} alt="" />
-              <h4>Location: {serviceArea}</h4>
+              <h4 className="font-bold text-lg">Name: {displayName}</h4>
+              <img className="rounded-lg w-32" src={photoURL} alt="" />
+              <h4 className="font-bold text-lg">Location: {serviceArea}</h4>
             </div>
           </div>
           <div className="card-actions justify-end">

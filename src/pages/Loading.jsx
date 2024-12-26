@@ -2,7 +2,7 @@ import React from 'react';
 import { Vortex } from 'react-loader-spinner'
 const Loading = () => {
     return (
-        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center justify-center my-16'>
             <Vortex
         visible={true}
         height="300"

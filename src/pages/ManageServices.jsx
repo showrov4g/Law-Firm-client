@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { data, Link } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
+import { Helmet } from "react-helmet";
 
 const ManageServices = () => {
   const [services, setServices] = useState();
@@ -48,7 +49,11 @@ const ManageServices = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto my-16">
+          <Helmet>
+        <title>LAW || manage your services</title>
+        <meta name="description" content="Learn more about us!" />
+      </Helmet>
       <div className="">
         {services?.length === 0 ? (
           <div>

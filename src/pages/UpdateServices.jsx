@@ -3,36 +3,58 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const UpdateServices = () => {
   const loaderData = useLoaderData();
-  const {_id}= loaderData
+  const { _id } = loaderData;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-   const {serviceName} = data
-   const services = {serviceName}
+    const {
+      serviceName,
+      serviceArea,
+      serviceImage,
+      servicePrice,
+      description,
+    } = data;
+    const services = {
+      serviceName,
+      serviceArea,
+      serviceImage,
+      servicePrice,
+      description,
+    };
 
-    fetch(`https://server-rho-liart-69.vercel.app/services/${_id}`,{
+    fetch(`https://server-rho-liart-69.vercel.app/services/${_id}`, {
       method: "PUT",
-      headers:{
-        "content-type": "application/json"
+      headers: {
+        "content-type": "application/json",
       },
-      body: JSON.stringify(services)
+      body: JSON.stringify(services),
     })
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-    .catch(err=>console.log(err))
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          toast.success("successfully Update");
+        }
+        if (data.modifiedCount === 0) {
+          toast.error("Already updated");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
-    <div className="w-2/4 mx-auto space-y-7 bg-white shadow-lg p-7">
-      <h1 className="text-center text-3xl font-bold">
-        Update : 
-      </h1>
+    <div className="w-2/4 mx-auto space-y-7 bg-white shadow-lg p-7 my-16">
+          <Helmet>
+        <title>LAW || Update your services</title>
+        <meta name="description" content="Learn more about us!" />
+      </Helmet>
+      <h1 className="text-center text-3xl font-bold">Update :</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col space-y-4"
