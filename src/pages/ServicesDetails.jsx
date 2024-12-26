@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 
 const ServicesDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setProviderEmail } = useContext(AuthContext);
   const data = useLoaderData();
   const {
     _id,
@@ -18,7 +18,7 @@ const ServicesDetails = () => {
     displayName,
     photoURL,
   } = data;
-
+  const serviceProviderEmail = email;
   const handleBooking = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -26,7 +26,7 @@ const ServicesDetails = () => {
     const instruction = form.instruction.value;
     const purchaseUserEmail = user?.email;
     const myPurchase = {
-      email,
+      serviceProviderEmail,
       date,
       instruction,
       _id,
@@ -52,7 +52,6 @@ const ServicesDetails = () => {
     .then(data=>(
       toast.success("Purchase Successfully")))
     .catch(err=>toast.error("You have already purchase"))
-
 
   };
 

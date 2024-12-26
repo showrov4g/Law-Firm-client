@@ -25,7 +25,7 @@ const Register = () => {
         navigate(location?.state ? location.state : "/");
         const creationTime  = user.metadata.creationTime;
 
-        const newUser = {name, email, creationTime}
+        const newUser = {name,  email, creationTime}
 
         // user data api fetch
         fetch('https://server-rho-liart-69.vercel.app/users',{
@@ -40,13 +40,11 @@ const Register = () => {
           .then((data) => {
             toast.success("User Account Create Successfully");
             Navigate("/");
-            console.log(data)
           })
           .catch((err) => {
             toast.error(err.message);
           });
       })
-      .catch((err) => toast.error(err.message));
   };
   const googleLogin = ()=>{
     loginWithGoogle()

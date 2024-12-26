@@ -45,12 +45,11 @@ const UpdateServices = () => {
           toast.error("Already updated");
         }
       })
-      .catch((err) => console.log(err));
   };
 
   return (
     <div className="w-2/4 mx-auto space-y-7 bg-white shadow-lg p-7 my-16">
-          <Helmet>
+      <Helmet>
         <title>LAW || Update your services</title>
         <meta name="description" content="Learn more about us!" />
       </Helmet>

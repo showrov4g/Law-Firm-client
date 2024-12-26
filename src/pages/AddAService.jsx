@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 const AddAService = () => {
   const { user } = useContext(AuthContext);
   const { email, displayName, photoURL } = user;
+  const serviceEmail = {email}
   const {
     register,
     handleSubmit,
@@ -21,7 +22,7 @@ const AddAService = () => {
       servicePrice,
     } = data;
     const service = {
-      email,
+      serviceEmail,
       serviceName,
       serviceArea,
       serviceImage,

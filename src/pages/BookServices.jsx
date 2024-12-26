@@ -9,7 +9,6 @@ import { Helmet } from "react-helmet";
 const BookServices = () => {
   const { user } = useContext(AuthContext);
   const [services, setServices] = useState([]);
-  console.log(services);
   useEffect(() => {
     fetch(
       `https://server-rho-liart-69.vercel.app/my-purchase?email=${user?.email}`
@@ -78,7 +77,9 @@ const BookServices = () => {
                   <th>Services Name</th>
                   <th>Price</th>
                   <th>Service Area</th>
+                  <th>Service Status</th>
                   <th>Manage</th>
+                 
                 </tr>
               </thead>
               <tbody>
@@ -90,6 +91,7 @@ const BookServices = () => {
                     <td>{service.serviceName}</td>
                     <td>$ {service.servicePrice}</td>
                     <td>{service.serviceArea}</td>
+                    <td className="text-red-600">{service.serviceStatus}</td>
                     <td className="flex items-center justify-center space-x-5">
    
                       <button

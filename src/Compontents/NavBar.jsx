@@ -15,6 +15,7 @@ const NavBar = () => {
             <li><NavLink to={"/addAService"}>Add Services</NavLink></li>
             <li><NavLink to={'/manageService'}>Manage Services</NavLink></li>
             <li><NavLink to={'/bookServices'}>Booked-Services</NavLink></li>
+            <li><NavLink to={'/serviceToDo'}>Service to do</NavLink></li>
           </ul>
         </details>
       </li>

@@ -11,6 +11,7 @@ import ServicesDetails from "../pages/ServicesDetails";
 import BookServices from "../pages/BookServices";
 import ErrorElement from "../pages/ErrorElement";
 import UpdateServices from "../pages/UpdateServices";
+import ServiceTOdo from "../pages/ServiceTOdo";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
         element:<PrivateRoute><UpdateServices></UpdateServices></PrivateRoute>,
         loader: ({params})=>fetch(`https://server-rho-liart-69.vercel.app/services/${params.id}`)
        
+      },
+      {
+        path: 'serviceToDo',
+        element: <PrivateRoute><ServiceTOdo></ServiceTOdo></PrivateRoute>,
       }
     ],
   },
