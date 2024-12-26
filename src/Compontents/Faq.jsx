@@ -16,7 +16,7 @@ const Faq = () => {
           What we have similar cases?
           </div>
           <div className="collapse-content">
-            <p>Pellentesque venenatis luctus leo eget vulputate. In suscipit ligula pulvinar feugiat viverra. Aliquam mollis blandit posuere. Ut eget magna arcu. Nam congue lectus eros. Suspendisse id purus euismod, ultricies neque non, commodo ligula.</p>
+            <p>: Understanding outcomes in similar cases allows lawyers to tailor their strategies to either distinguish or align with those rulings, depending on the client's interests.</p>
           </div>
         </div>
         <div className="collapse collapse-plus bg-base-200">
@@ -25,7 +25,7 @@ const Faq = () => {
           What is your legal experience level?
           </div>
           <div className="collapse-content">
-            <p>Pellentesque venenatis luctus leo eget vulputate. In suscipit ligula pulvinar feugiat viverra. Aliquam mollis blandit posuere. Ut eget magna arcu. Nam congue lectus eros. Suspendisse id purus euismod, ultricies neque non, commodo ligula.</p>
+            <p>: Understanding outcomes in similar cases allows lawyers to tailor their strategies to either distinguish or align with those rulings, depending on the client's interests.</p>
           </div>
         </div>
         <div className="collapse collapse-plus bg-base-200">
@@ -34,7 +34,7 @@ const Faq = () => {
           How do initial consultations work?
           </div>
           <div className="collapse-content">
-            <p>Pellentesque venenatis luctus leo eget vulputate. In suscipit ligula pulvinar feugiat viverra. Aliquam mollis blandit posuere. Ut eget magna arcu. Nam congue lectus eros. Suspendisse id purus euismod, ultricies neque non, commodo ligula.</p>
+            <p>: Understanding outcomes in similar cases allows lawyers to tailor their strategies to either distinguish or align with those rulings, depending on the client's interests.</p>
           </div>
         </div>
         <div className="collapse collapse-plus bg-base-200">
@@ -43,7 +43,7 @@ const Faq = () => {
           How will you update me on progress?
           </div>
           <div className="collapse-content">
-            <p>Pellentesque venenatis luctus leo eget vulputate. In suscipit ligula pulvinar feugiat viverra. Aliquam mollis blandit posuere. Ut eget magna arcu. Nam congue lectus eros. Suspendisse id purus euismod, ultricies neque non, commodo ligula.</p>
+            <p>: Understanding outcomes in similar cases allows lawyers to tailor their strategies to either distinguish or align with those rulings, depending on the client's interests.</p>
           </div>
         </div>
       </div>
