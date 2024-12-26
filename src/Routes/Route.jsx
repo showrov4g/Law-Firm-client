@@ -9,11 +9,14 @@ import AddAService from "../pages/AddAService";
 import ManageServices from "../pages/ManageServices";
 import ServicesDetails from "../pages/ServicesDetails";
 import BookServices from "../pages/BookServices";
+import ErrorElement from "../pages/ErrorElement";
+import UpdateServices from "../pages/UpdateServices";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorElement></ErrorElement>,
     children: [
       {
         path: "/",
@@ -54,6 +57,12 @@ const router = createBrowserRouter([
       {
         path:"/bookServices",
         element: <PrivateRoute><BookServices></BookServices></PrivateRoute>
+      },
+      {
+        path: 'updateServices/:id',
+        element:<PrivateRoute><UpdateServices></UpdateServices></PrivateRoute>,
+        loader: ({params})=>fetch(`https://server-rho-liart-69.vercel.app/services/${params.id}`)
+       
       }
     ],
   },

@@ -3,13 +3,13 @@ import image from "../assets/image/faq.jpg";
 
 const Faq = () => {
   return (
-    <div className="grid md:grid-cols-2  gap-5 my-20">
-      <div>
-        <img src={image} alt="" />
+    <div className="grid lg:grid-cols-2  gap-5 my-20">
+      <div className="rounded-lg">
+        <img className="rounded-lg" src={image} alt="" />
       </div>
-      <div>
-        <h4>FAQ</h4>
-        <h1>We Have All Legal Answers Here</h1>
+      <div className="space-y-1">
+        <h4 className="text-xl font-bold text-[#B68C5A]">FAQ</h4>
+        <h1 className="text-4xl font-bold ">We Have All Legal Answers Here</h1>
         <div className="collapse collapse-plus bg-base-200">
           <input type="radio" name="my-accordion-3" defaultChecked />
           <div className="collapse-title text-xl font-medium">
