@@ -40,7 +40,7 @@ const Services = () => {
                 <h2 className="card-title">
                   {service.serviceName}
                   <div className="badge badge-secondary">
-                    Price:$ {service.servicePrice}
+                  <span className="hidden md:block">Price :</span>$ {service.servicePrice}
                   </div>
                 </h2>
                 <p>{service.description.substring(0, 100)}</p>

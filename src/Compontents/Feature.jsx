@@ -21,7 +21,7 @@ const Feature = () => {
         <h1 className=" text-3xl font-bold">Popular Services</h1>
         <hr className="w-36 h-1 my-3 bg-green-600 overflow-hidden" />
       </div>
-      <div className="grid grid-cols-2 gap-6 my-7">
+      <div className="grid md:grid-cols-2 gap-6 my-7">
         {services?.map((service) => (
           <div>
             <div layoutId="item" className="card bg-base-100 shadow-xl">
@@ -38,7 +38,7 @@ const Feature = () => {
                 <h2 className="card-title">
                   {service.serviceName}
                   <div className="badge badge-secondary">
-                    Price:$ {service.servicePrice}
+                    <span className="hidden md:block">Price :</span>$ {service.servicePrice}
                   </div>
                 </h2>
                 <p>{service.description.substring(0, 100)}</p>
