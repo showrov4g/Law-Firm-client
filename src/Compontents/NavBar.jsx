@@ -1,9 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+  useEffect(()=>{
+    localStorage.setItem("theme", theme)
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme)
+   },[theme])
+  const themeController = (e) => {
+    if(e.target.checked){
+      setTheme("dark")
+    }else(
+      setTheme("light")
+    )
+  };
   const links = (
     <>
        <li><NavLink to={"/"}>Home</NavLink></li>
@@ -53,6 +68,13 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
+      <input
+        onChange={themeController}
+        type="checkbox"
+        checked={theme === "light" ? false : true}
+        value="synthwave"
+        className="toggle theme-controller"
+      />
       <div className="navbar-end">
         {user && user?.email ? (
           <div className="dropdown dropdown-end">
