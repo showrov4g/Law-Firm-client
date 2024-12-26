@@ -7,3 +7,6 @@ this is a Law Service website. here a Lower can add and manage his/her services.
 - Tailwind CSS
 - Daisyui 
 - React Router 
+- And other necessary things
+
+<img src="./public/ss.jpeg" />
