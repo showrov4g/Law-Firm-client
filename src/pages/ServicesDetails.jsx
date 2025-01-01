@@ -29,7 +29,6 @@ const ServicesDetails = () => {
       serviceProviderEmail,
       date,
       instruction,
-      _id,
       serviceName,
       serviceArea,
       serviceImage,
@@ -40,18 +39,17 @@ const ServicesDetails = () => {
       purchaseUserEmail,
       serviceStatus: "pending"
     };
-    fetch(`https://server-rho-liart-69.vercel.app/purchase`,{
-      method: "POST",
-      headers:{
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(myPurchase)
+    fetch(`http://localhost:5000/purchase`,{
+    method:"POST",
+    headers:{
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(myPurchase)
 
     })
     .then(res=>res.json())
-    .then(data=>(
-      toast.success("Purchase Successfully")))
-    .catch(err=>toast.error("You have already purchase"))
+    .then(data=>console.log(data))
+    .catch(err=>console.log(err))
 
   };
 

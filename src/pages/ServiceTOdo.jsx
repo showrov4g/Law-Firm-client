@@ -10,7 +10,7 @@ const ServiceTOdo = () => {
   const [services, setServices] = useState();
   useEffect(() => {
     fetch(
-      `https://server-rho-liart-69.vercel.app/service-to-do?email=${user?.email}`
+      `http://localhost:5000/service-to-do?email=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setServices(data))
