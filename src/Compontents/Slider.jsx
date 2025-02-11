@@ -17,7 +17,7 @@ const Slider = () => {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
   return (
-    <div className="overflow-hidden h-96 mb-10 -z-10">
+    <div className="overflow-hidden h-[34rem] mb-10 -z-10">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
