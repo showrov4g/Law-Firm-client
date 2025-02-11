@@ -37,33 +37,77 @@ const ServicesDetails = () => {
       displayName,
       photoURL,
       purchaseUserEmail,
-      serviceStatus: "pending"
+      serviceStatus: "pending",
     };
-    fetch(`http://localhost:5000/purchase`,{
-    method:"POST",
-    headers:{
-      "content-type": "application/json"
-    },
-    body: JSON.stringify(myPurchase)
-
+    fetch(`http://localhost:5000/purchase`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(myPurchase),
     })
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-    .catch(err=>console.log(err))
-
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className=" w-4/5 mx-auto my-16">
-          <Helmet>
+      <Helmet>
         <title>LAW || Service details </title>
         <meta name="description" content="Learn more about us!" />
       </Helmet>
-      <h1 className="text-center text-4xl font-semibold my-10">{serviceName}</h1>
+      <h1 className="text-center text-4xl font-semibold my-10">
+        {serviceName}
+      </h1>
 
-    {/* =================== */}
-        
-    {/* ================== */}
+      {/* =================== */}
+      <div className="flex gap-6">
+        <div>
+          <img
+            className="w-11/12 mx-auto rounded-xl"
+            src={serviceImage}
+            alt=""
+          />
+        </div>
+        <div>
+          {/* -------------------- */}
+          <div>
+            <div className="flex flex-col gap-6">
+              <h2 className="text-3xl">Service Name: {serviceName}</h2>
+              <p className="text-xl font-bold">
+                Description:{" "}
+                <span className="text-base font-thin">{description}</span>
+              </p>
+              <p className="badge badge-secondary">
+                Service Price ${servicePrice}
+              </p>
+            </div>
+            {/* service provider information */}
+            <div>
+              <h1>Service provider Information</h1>
+              <div>
+                <img className="rounded-lg w-32" src={photoURL} alt="" />
+                <h4 className="font-bold text-lg">Name: {displayName}</h4>
+
+                <h4 className="font-bold text-lg">Location: {serviceArea}</h4>
+              </div>
+            </div>
+            <div className=" justify-end">
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+                className="btn btn-primary"
+              >
+                Book Now
+              </button>
+            </div>
+          </div>
+          {/* -------------------- */}
+        </div>
+      </div>
+      {/* ================== */}
 
       {/* <div className="card bg-base-100 w-10/12 p-4 mx-auto shadow-xl">
         <figure>
@@ -79,7 +123,7 @@ const ServicesDetails = () => {
             </p>
           </div>
           {/* service provider information */}
-          {/* <div>
+      {/* <div>
             <h1 className="font-bold text-xl">Service provider Information</h1>
             <div>
               <h4 className="font-bold text-lg">Name: {displayName}</h4>
@@ -96,7 +140,7 @@ const ServicesDetails = () => {
             </button>
           </div>
         </div>
-      </div> */} 
+      </div> */}
       {/* model  */}
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 
@@ -104,7 +148,11 @@ const ServicesDetails = () => {
         <div className="modal-box">
           <div>
             <div className="my-2">
-            <img className="w-60 mx-auto p-2 border rounded-2xl" src={serviceImage} alt="" />
+              <img
+                className="w-60 mx-auto p-2 border rounded-2xl"
+                src={serviceImage}
+                alt=""
+              />
             </div>
             <h4 className="border p-3">Service Id: {_id}</h4>
             <h4 className="border p-3">Service Name: {serviceName}</h4>
