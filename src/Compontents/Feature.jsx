@@ -16,7 +16,7 @@ const Feature = () => {
   }, []);
 
   return (
-    <div>
+    <div className="z-10">
       <div className=" flex flex-col items-center justify-center">
         <h1 className=" text-3xl font-bold">Popular Services</h1>
         <hr className="w-36 h-1 my-3 bg-green-600 overflow-hidden" />

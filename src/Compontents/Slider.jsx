@@ -17,7 +17,7 @@ const Slider = () => {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
   return (
-    <div className="overflow-hidden h-96 mb-10">
+    <div className="overflow-hidden h-96 mb-10 -z-10">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -31,16 +31,16 @@ const Slider = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper"
+        className="mySwiper "
       >
         <SwiperSlide>
-          <img className="w-full" src={slide1} alt="" />
+          <img className="w-full z-10" src={slide1} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img className="w-full" src={slide2} alt="" />
+          <img className="w-full  z-10" src={slide2} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img className="w-full" src={slide3} alt="" />
+          <img className="w-full  z-10" src={slide3} alt="" />
         </SwiperSlide>
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>

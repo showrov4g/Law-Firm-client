@@ -3,11 +3,11 @@ import image from "../assets/image/faq.jpg";
 
 const Faq = () => {
   return (
-    <div className="grid lg:grid-cols-2  gap-5 my-20">
+    <div className="grid lg:grid-cols-2  gap-5 my-20 ">
       <div className="rounded-lg">
         <img className="rounded-lg" src={image} alt="" />
       </div>
-      <div className="space-y-1">
+      <div className="space-y-1 -z-30">
         <h4 className="text-xl font-bold text-[#B68C5A]">FAQ</h4>
         <h1 className="text-4xl font-bold ">We Have All Legal Answers Here</h1>
         <div className="collapse collapse-plus bg-base-200">

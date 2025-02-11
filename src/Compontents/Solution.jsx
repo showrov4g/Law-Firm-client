@@ -6,14 +6,14 @@ import { motion } from "motion/react";
 
 const Solution = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-slate-200 px-5 py-20 rounded-xl">
+    <div className="flex flex-col items-center justify-center bg-slate-200 px-5 py-20 rounded-xl z-10">
       <h1 className="text-5xl font-bold">The Best Lawyer Solution</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-8">
         <motion.div
           whileHover={{ scale: 1.2 }}
           onHoverStart={(event) => {}}
           onHoverEnd={(event) => {}}
-          className="bg-white shadow-xl p-4 rounded-lg"
+          className="bg-white shadow-xl p-4 rounded-lg  overflow-hidden"
         >
           <p className="text-5xl inline-block bg-[#B68C5A] p-3 rounded-lg text-white">
             <GoLaw />
