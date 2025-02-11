@@ -59,8 +59,13 @@ const ServicesDetails = () => {
         <title>LAW || Service details </title>
         <meta name="description" content="Learn more about us!" />
       </Helmet>
-      <h1 className="text-center text-4xl font-semibold">{serviceName}</h1>
-      <div className="card bg-base-100 w-10/12 p-4 mx-auto shadow-xl">
+      <h1 className="text-center text-4xl font-semibold my-10">{serviceName}</h1>
+
+    {/* =================== */}
+        
+    {/* ================== */}
+
+      {/* <div className="card bg-base-100 w-10/12 p-4 mx-auto shadow-xl">
         <figure>
           <img className=" rounded-xl" src={serviceImage} alt="Shoes" />
         </figure>
@@ -74,7 +79,7 @@ const ServicesDetails = () => {
             </p>
           </div>
           {/* service provider information */}
-          <div>
+          {/* <div>
             <h1 className="font-bold text-xl">Service provider Information</h1>
             <div>
               <h4 className="font-bold text-lg">Name: {displayName}</h4>
@@ -91,7 +96,7 @@ const ServicesDetails = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */} 
       {/* model  */}
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 

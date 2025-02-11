@@ -20,7 +20,7 @@ const Services = () => {
         <title>LAW || manage your services</title>
         <meta name="description" content="Learn more about us!" />
       </Helmet>
-      <h2 className="text-center text-5xl font-bold">
+      <h2 className="text-center text-5xl font-semibold my-10">
         All Service: {data.length}
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-6">
@@ -39,20 +39,20 @@ const Services = () => {
               <div className="card-body">
                 <h2 className="card-title">
                   {service.serviceName}
-                  <div className="badge badge-secondary">
+                  <div className="badge bg-[#94aca7]">
                   <span className="hidden md:block">Price :</span>$ {service.servicePrice}
                   </div>
                 </h2>
                 <p>{service.description.substring(0, 100)}</p>
                 <div className="flex gap-5 justify-center items-center">
                   <div className="avatar">
-                    <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                    <div className="w-10 rounded-full ring ring-[#9a9a7d]">
                       <img src={service.photoURL} />
                     </div>
                   </div>
                   <p className="font-semibold">
                     Service Provider:{" "}
-                    <span className="badge badge-secondary">
+                    <span className="badge bg-[#94aca7]">
                       {service.displayName}
                     </span>
                   </p>
@@ -60,7 +60,7 @@ const Services = () => {
                 <div className="card-actions justify-end">
                   <Link to={`/servicesDetails/${service._id}`}>
                     <motion.button
-                      className=" btn btn-primary"
+                      className=" btn bg-[#9a9a7d]"
                       whileHover={{ scale: 1.2 }}
                       onHoverStart={(event) => {}}
                       onHoverEnd={(event) => {}}
