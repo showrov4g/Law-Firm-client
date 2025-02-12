@@ -133,7 +133,7 @@ const AddAService = () => {
             </p>
           )}
           <input
-            className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-2xl text-white"
+            className="btn bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] text-2xl text-white"
             type="submit"
           />
         </form>
