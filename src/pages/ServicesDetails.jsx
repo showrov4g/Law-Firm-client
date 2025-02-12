@@ -62,7 +62,7 @@ const ServicesDetails = () => {
       </h1>
 
       {/* =================== */}
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-6">
         <div>
           <img
             className="w-11/12 mx-auto rounded-xl"
@@ -79,26 +79,27 @@ const ServicesDetails = () => {
                 Description:{" "}
                 <span className="text-base font-thin">{description}</span>
               </p>
-              <p className="badge badge-secondary">
+              <p className="badge bg-[#a9bcb1] font-semibold">
                 Service Price ${servicePrice}
               </p>
             </div>
             {/* service provider information */}
-            <div>
-              <h1>Service provider Information</h1>
-              <div>
-                <img className="rounded-lg w-32" src={photoURL} alt="" />
-                <h4 className="font-bold text-lg">Name: {displayName}</h4>
-
-                <h4 className="font-bold text-lg">Location: {serviceArea}</h4>
+            <div className="space-y-5 my-5">
+              <hr className="h-1 bg-[#9a9a7d]"/>
+              <h1 className="text-xl">Service provider Information</h1>
+              <div className="flex items-center gap-6 justify-start">
+                <img className="rounded-full w-12" src={photoURL} alt="" />
+                <h4 className=" text-lg">Name: {displayName}</h4>
+ 
+                <h4 className=" text-lg ">Location: {serviceArea}</h4>
               </div>
             </div>
-            <div className=" justify-end">
+            <div className=" my-5">
               <button
                 onClick={() =>
                   document.getElementById("my_modal_1").showModal()
                 }
-                className="btn btn-primary"
+                className="btn bg-[#9a9a7d]"
               >
                 Book Now
               </button>
