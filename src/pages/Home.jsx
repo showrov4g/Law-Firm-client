@@ -6,6 +6,7 @@ import Slider from "../Compontents/Slider";
 import Solution from "../Compontents/Solution";
 import Faq from "../Compontents/Faq";
 import { Helmet } from "react-helmet";
+import Newsletter from "../Compontents/Newsletter";
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
       {/* our best solution section  */}
       <Solution></Solution>
       <Faq></Faq>
+      <Newsletter></Newsletter>
     </div>
   );
 };

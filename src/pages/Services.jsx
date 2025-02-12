@@ -25,6 +25,7 @@ const Services = () => {
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-6">
         {data?.map((service) => (
+          
           <div >
             <div className="card bg-base-100 shadow-xl">
               <figure>
@@ -32,7 +33,7 @@ const Services = () => {
                   whileHover={{ scale: 1.2 }}
                   onHoverStart={(event) => {}}
                   onHoverEnd={(event) => {}}
-                  src={service.serviceImage}
+                  src={service?.serviceImage}
                   alt="Shoes"
                 />
               </figure>

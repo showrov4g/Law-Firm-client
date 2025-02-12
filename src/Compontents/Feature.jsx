@@ -24,7 +24,7 @@ const Feature = () => {
       <div className="grid md:grid-cols-3 gap-6 my-7">
         {services?.map((service) => (
           <div>
-            <div layoutId="item" className="card bg-base-100 shadow-xl">
+            <div layoutId="item" className="card bg-white shadow-xl">
               <figure>
                 <motion.img
                   whileHover={{ scale: 1.2 }}

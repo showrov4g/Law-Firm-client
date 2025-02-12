@@ -5,6 +5,7 @@ import Sticky from "react-stickynode";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
