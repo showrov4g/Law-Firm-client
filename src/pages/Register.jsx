@@ -62,7 +62,7 @@ const Register = () => {
         <meta name="description" content="Learn more about us!" />
       </Helmet>
       <div className="max-w-lg mx-auto bg-white rounded-xl">
-        <h1 className="text-5xl py-5 text-white font-bold text-center bg-gradient-to-r from-[#5756CD] to-[#B850C1] rounded-t-xl ">
+        <h1 className="text-4xl py-5 text-black font-bold text-center bg-gradient-to-r from-[#9a9a7d] to-[#94aca7]  rounded-t-xl ">
           Register now
         </h1>
         <form
@@ -70,7 +70,7 @@ const Register = () => {
           className="flex flex-col gap-5 p-6 "
         >
           <input
-            className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
+            className="px-3 py-2 rounded-full text-xl bg-transparent outline-none border"
             type="text"
             placeholder="Name"
             {...register("name", { required: true })}
@@ -99,7 +99,7 @@ const Register = () => {
           />
 
           <input
-            className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-2xl text-white"
+            className="btn bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] text-2xl text-white"
             type="submit"
             value="Register"
           />
@@ -113,7 +113,7 @@ const Register = () => {
           </p>
           <div className="divider divider-success">OR</div>
           <div>
-            <button onClick={googleLogin} className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-xl text-white w-full">
+            <button onClick={googleLogin} className="btn bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] text-xl text-white w-full">
               <FcGoogle /> Login With Google
             </button>
           </div>
