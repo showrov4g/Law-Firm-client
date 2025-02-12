@@ -54,8 +54,8 @@ const Login = () => {
         <title>LAW || Login page</title>
         <meta name="description" content="Learn more about us!" />
       </Helmet>
-      <div className="max-w-lg mx-auto bg-white rounded-xl">
-        <h1 className="text-5xl py-5 text-white font-bold text-center bg-gradient-to-r from-[#5756CD] to-[#B850C1] rounded-t-xl ">
+      <div className="max-w-lg mx-auto bg-[#cccccc] rounded-xl">
+        <h1 className="text-4xl py-5  font-bold text-center bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] rounded-t-xl ">
           Login now
         </h1>
         <form
@@ -63,14 +63,14 @@ const Login = () => {
           className="flex flex-col gap-5 p-6 "
         >
           <input
-            className="px-5 py-3 rounded-full text-2xl bg-transparent outline-none border"
+            className="px-3 py-2 rounded-full text-xl bg-transparent outline-none border"
             type="email"
             placeholder="Email"
             {...register("email", { required: true })}
           />
 
           <input
-            className="px-5 py-3 rounded-full text-2xl bg-transparent outline-none border"
+            className="px-3 py-2 rounded-full text-xl bg-transparent outline-none border"
             type="password"
             placeholder="Password"
             {...register("password", {
@@ -81,7 +81,7 @@ const Login = () => {
           />
 
           <input
-            className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-2xl text-white"
+            className="btn bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] text-xl "
             type="submit"
             value="Login"
           />
@@ -94,7 +94,7 @@ const Login = () => {
             </Link>
             <div className="divider divider-success">OR</div>
             <div>
-              <button onClick={googleLogin} className="btn bg-gradient-to-r from-[#5756CD] to-[#B850C1] text-xl text-white w-full">
+              <button onClick={googleLogin} className="btn bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] text-xl text-white w-full">
                 <FcGoogle /> Login With Google
               </button>
             </div>
