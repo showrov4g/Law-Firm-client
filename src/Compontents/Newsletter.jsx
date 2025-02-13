@@ -17,7 +17,7 @@ const Newsletter = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Subscribe</button>
+              <button className="btn bg-[#9a9a7d]">Subscribe</button>
             </div>
           </form>
         </div>

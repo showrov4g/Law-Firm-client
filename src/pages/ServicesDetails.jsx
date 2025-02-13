@@ -89,9 +89,9 @@ const ServicesDetails = () => {
               <h1 className="text-xl">Service provider Information</h1>
               <div className="flex items-center gap-6 justify-start">
                 <img className="rounded-full w-12" src={photoURL} alt="" />
-                <h4 className=" text-lg">Name: {displayName}</h4>
+                <h4 className=" text-sm">Name: {displayName}</h4>
  
-                <h4 className=" text-lg ">Location: {serviceArea}</h4>
+                <h4 className=" text-sm ">Location: {serviceArea}</h4>
               </div>
             </div>
             <div className=" my-5">
