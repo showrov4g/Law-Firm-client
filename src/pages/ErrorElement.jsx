@@ -6,7 +6,7 @@ const ErrorElement = () => {
   return (
     <div className="flex flex-col justify-center items-center my-16">
           <Helmet>
-        <title>Nothing here</title>
+        <title>Nothing here !</title>
         <meta name="description" content="Learn more about us!" />
       </Helmet>
       <div>

@@ -83,7 +83,7 @@ const ServicesDetails = () => {
                 Service Price ${servicePrice}
               </p>
             </div>
-            {/* service provider information */}
+            {/* service provider  information */}
             <div className="space-y-5 my-5">
               <hr className="h-1 bg-[#9a9a7d]"/>
               <h1 className="text-xl">Service provider Information</h1>
