@@ -8,5 +8,7 @@ this is a Law Service website. here a Lower can add and manage his/her services.
 - Daisyui 
 - React Router 
 - And other necessary things
+*  Live website Link: <a href="https://assignment11-495e5.web.app/">Click here<a/>
 
-<img src="./public/ss.jpeg" />
+
+<img src="./public/ss.png" />
