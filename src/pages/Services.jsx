@@ -16,7 +16,7 @@ const Services = () => {
   } = data;
   return (
     <div className="my-16">
-          <Helmet>
+      <Helmet>
         <title>LAW || manage your services</title>
         <meta name="description" content="Learn more about us!" />
       </Helmet>
@@ -25,35 +25,36 @@ const Services = () => {
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-6">
         {data?.map((service) => (
-          
-          <div >
+
+          <div>
             <div className="card bg-base-100 shadow-xl">
               <figure>
                 <motion.img
                   whileHover={{ scale: 1.2 }}
-                  onHoverStart={(event) => {}}
-                  onHoverEnd={(event) => {}}
+                  onHoverStart={() => { }}
+                  onHoverEnd={() => { }}
                   src={service?.serviceImage}
-                  alt="Shoes"
+                  alt="Service Image"
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">
+                <h2 className="card-title text-cyan-600">
                   {service.serviceName}
-                  <div className="badge bg-[#94aca7]">
-                  <span className="hidden md:block">Price :</span>$ {service.servicePrice}
+                  <div className="badge bg-teal-500">
+                    <span className="hidden md:block text-white">Price :</span>$
+                    {service.servicePrice}
                   </div>
                 </h2>
-                <p>{service.description.substring(0, 100)}</p>
+                <p className="text-gray-600">{service.description.substring(0, 100)}</p>
                 <div className="flex gap-5 justify-center items-center">
                   <div className="avatar">
-                    <div className="w-10 rounded-full ring ring-[#9a9a7d]">
-                      <img src={service.photoURL} />
+                    <div className="w-10 rounded-full ring ring-teal-500">
+                      <img src={service.photoURL} alt="Provider" />
                     </div>
                   </div>
-                  <p className="font-semibold">
+                  <p className="font-semibold text-gray-600">
                     Service Provider:{" "}
-                    <span className="badge bg-[#94aca7]">
+                    <span className="badge bg-cyan-500 text-white">
                       {service.displayName}
                     </span>
                   </p>
@@ -61,18 +62,20 @@ const Services = () => {
                 <div className="card-actions justify-end">
                   <Link to={`/servicesDetails/${service._id}`}>
                     <motion.button
-                      className=" btn bg-[#9a9a7d]"
+                      className="btn bg-gradient-to-r from-teal-500 to-cyan-500 text-white"
                       whileHover={{ scale: 1.2 }}
-                      onHoverStart={(event) => {}}
-                      onHoverEnd={(event) => {}}
+                      onHoverStart={() => { }}
+                      onHoverEnd={() => { }}
                     >
-                      Views Details
-                    </motion.button>{" "}
+                      View Details
+                    </motion.button>
                   </Link>
                 </div>
               </div>
             </div>
           </div>
+
+
         ))}
       </div>
     </div>
