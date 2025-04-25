@@ -1,123 +1,163 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 
 const Register = () => {
-  const { user, createUser, setUser, updateUser, loginWithGoogle } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { user, createUser, setUser, updateUser, loginWithGoogle } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     const { name, email, password, photoUrl } = data;
+
     createUser(email, password)
       .then((result) => {
-        // user update
         updateUser({ displayName: name, photoURL: photoUrl });
         const user = result.user;
         setUser(user);
         navigate(location?.state ? location.state : "/");
-        const creationTime  = user.metadata.creationTime;
 
-        const newUser = {name,  email, creationTime}
+        const creationTime = user.metadata.creationTime;
+        const newUser = { name, email, creationTime };
 
-        // user data api fetch
-        fetch('https://server-rho-liart-69.vercel.app/users',{
-          method:'POSt',
-          headers:{
-            "content-type": "application/json"
+        fetch("https://server-rho-liart-69.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
           },
-          body: JSON.stringify(newUser)
-
+          body: JSON.stringify(newUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            toast.success("User Account Create Successfully");
-            Navigate("/");
+          .then(() => {
+            toast.success("User Account Created Successfully");
           })
           .catch((err) => {
             toast.error(err.message);
           });
       })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
-  const googleLogin = ()=>{
+
+  const googleLogin = () => {
     loginWithGoogle()
-    .then(data=>(
-      toast.success("You have successfully login with your google account"),
-      navigate(location?.state ? location.state : "/")
-    ))
-    .catch(err=>toast.error(err.message))
-  }
+      .then(() => {
+        toast.success("You have successfully logged in with Google");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((err) => toast.error(err.message));
+  };
 
   return (
-    <div className="bg-[#F2F2F2] py-10 my-16">
-          <Helmet>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
+      <Helmet>
         <title>LAW || Register now</title>
-        <meta name="description" content="Learn more about us!" />
+        <meta name="description" content="Register to get started!" />
       </Helmet>
-      <div className="max-w-lg mx-auto bg-white rounded-xl">
-        <h1 className="text-4xl py-5 text-black font-bold text-center bg-gradient-to-r from-[#9a9a7d] to-[#94aca7]  rounded-t-xl ">
-          Register now
-        </h1>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-5 p-6 "
-        >
-          <input
-            className="px-3 py-2 rounded-full text-xl bg-transparent outline-none border"
-            type="text"
-            placeholder="Name"
-            {...register("name", { required: true })}
-          />
-          <input
-            className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
-            type="email"
-            placeholder="Email"
-            {...register("email", { required: true })}
-          />
-          <input
-            className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
-            type="url"
-            placeholder="Photo Url"
-            {...register("photoUrl", { required: true })}
-          />
-          <input
-            className="px-5 py-3 rounded-full text-xl bg-transparent outline-none border"
-            type="password"
-            placeholder="Password"
-            {...register("password", {
-              required: true,
-              min: 6,
-              pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/i,
-            })}
-          />
+
+      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
+          Create Account
+        </h2>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              className="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              {...register("name", { required: "Name is required" })}
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            )}
+          </div>
+
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              className="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              {...register("email", { required: "Email is required" })}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
+          </div>
+
+          <div>
+            <input
+              type="url"
+              placeholder="Photo URL"
+              className="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              {...register("photoUrl", { required: "Photo URL is required" })}
+            />
+            {errors.photoUrl && (
+              <p className="text-red-500 text-sm">
+                {errors.photoUrl.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              className="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              {...register("password", {
+                required: "Password is required",
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/i,
+                  message:
+                    "Password must be at least 8 characters and contain uppercase, lowercase and a number",
+                },
+              })}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
 
           <input
-            className="btn bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] text-2xl text-white"
             type="submit"
             value="Register"
+            className="w-full py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 cursor-pointer shadow-md"
           />
         </form>
-        <div className="px-6 pb-10">
-          <p>
-            If you have any account{" "}
-            <Link className="text-green-500" to={"/login"}>
-              Login Here
-            </Link>
-          </p>
-          <div className="divider divider-success">OR</div>
-          <div>
-            <button onClick={googleLogin} className="btn bg-gradient-to-r from-[#9a9a7d] to-[#94aca7] text-xl text-white w-full">
-              <FcGoogle /> Login With Google
-            </button>
-          </div>
+
+        <div className="mt-6 text-center text-gray-600">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-600 font-semibold">
+            Login Here
+          </Link>
         </div>
+
+        <div className="flex items-center my-6">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="mx-4 text-gray-500">OR</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+
+        <button
+          onClick={googleLogin}
+          className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-white border shadow hover:shadow-lg transition"
+        >
+          <FcGoogle className="text-2xl" />
+          <span className="text-gray-700 font-medium">Continue with Google</span>
+        </button>
       </div>
     </div>
   );
